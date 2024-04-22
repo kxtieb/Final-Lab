@@ -31,6 +31,7 @@ module tb ();
    // check results on falling edge of clk
    always @(negedge clk) begin
 		if(~reset) begin
+      if (shift_seed == seed) 
 		//check if your output equals the initial output 
 		//if so, report how many iterations it took to repeat
 		//this should be (2^n) - 1
