@@ -1,43 +1,50 @@
-// testbench to prove maximal LFSR
-module tb ();
+`timescale 1ns/1ps
+module stimulus ();
+logic [15:0] seed, shift_seed;
+logic clk, reset;
+logic [31:0]vectornum;
 
-   //logic variables to route input and output to DUT
+ integer handle3;
+   integer desc3;
 
-   //create file handles to write results to a file
-   
-   // instantiate device under test (small LFSR)
 
-   //set up a clock signal
-   always     
+lfsr dut(seed, clk, reset, shift_seed);
+
+
+initial 
+     begin	
+	clk = 1'b1;
+	forever #5 clk = ~clk;
+end
+
+initial
      begin
-	clk = 1; #1; clk = 0; #1;
-     end
-   
-   initial
+	// Gives output file name
+	handle3 = $fopen("lfsr.out");
+     desc3 = handle3;
+     vectornum = 0;
+	// Tells when to finish simulation
+	#500 $display("HERE INITIAL");
+     //#1000 $finish;		
+end
+
+   always @(negedge clk)
      begin
-	//set up output file
-	//set up any book keeping variables you may want to use
-	//set up a starting seed.  What happens with all 0s?
-	//reset your DUT
-	//save the initial output of your DUT to compare with current output
-	//and see whenb you repeat
+     //$fdisplay(desc3, "%b || %b", seed, shift_seed);
+     $fdisplay(desc3, "%b", shift_seed);
+     vectornum = vectornum + 1;
+     if(vectornum === 65537) begin
+     $display("Here");
+     $finish;
+     end
      end
 
-   always @(posedge clk)
+initial
      begin
-		//output your results to a file
-     end
+        #0 seed = 16'h3c28;
+        #0 reset = 1'b1;
+        #20 reset = 1'b0;
+        
+end
 
-   // check results on falling edge of clk
-   always @(negedge clk) begin
-		if(~reset) begin
-      if (shift_seed == seed) 
-		//check if your output equals the initial output 
-		//if so, report how many iterations it took to repeat
-		//this should be (2^n) - 1
-		//if the output never repeats for 2^n iterations, report that
-		end
-	end
-   
-endmodule // tb
-
+     endmodule

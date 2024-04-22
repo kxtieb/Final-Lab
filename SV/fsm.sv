@@ -1,10 +1,11 @@
-module FSM (clk, reset, a, y);
+module FSM (clk, reset, start, lfsr_load, lfsr_rst, rst, en);
 
    input logic  clk;
    input logic  reset;
-   input logic 	a;
+   input logic 	start;
+   input logic lfsr_load;
    
-   output logic y;
+   output logic lfsr_rst, rst, en;
 
    typedef enum 	logic [1:0] {S0, S1, S2} statetype;
    statetype state, nextstate;
@@ -18,22 +19,31 @@ module FSM (clk, reset, a, y);
    always_comb
      case (state)
        S0: begin
-	  y <= 1'b0;	  
-	  if (a) nextstate <= S0;
-	  else   nextstate <= S1;
+	  lfsr_rst = 1;
+    rst = 1;
+    en = 0;	  
+    if (~start && lfsr_load) nextstate <= S2;
+    else if (start) nextstate <= S1;
+    else nextstate <= S0;
        end
        S1: begin
-	  y <= 1'b0;	  	  
-	  if (a) nextstate <= S2;
-	  else   nextstate <= S1;
+	   lfsr_rst = 0;
+    rst = 0;
+    en = 1;	  	  
+	 if (lfsr_load)  nextstate <= S2;
+    else  nextstate <= S1;
        end
        S2: begin
-	  y <= 1'b1;	  	  
-	  if (a) nextstate <= S2;
-	  else   nextstate <= S0;
+	   lfsr_rst = 0;
+    rst = 1;
+    en = 1;	  	  
+	  if (start) nextstate <= S1;
+    else nextstate <= S2;
        end
-       default: begin
-	  y <= 1'b0;	  	  
+       default: begin 
+         lfsr_rst = 1;
+    rst = 1;
+    en = 0;	 	  
 	  nextstate <= S0;
        end
      endcase

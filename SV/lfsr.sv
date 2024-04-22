@@ -5,7 +5,7 @@ input logic [15:0]seed;
 
      always @(posedge clk) begin
         if(reset) shift_seed[15:0] <= seed[15:0];
-     else shift_seed <= {shift_seed[14:0],(shift_seed[3]^~shift_seed[12]^~shift_seed[14]^~shift_seed[15])};
+     else shift_seed <= {shift_seed[14:0],(shift_seed[3]^shift_seed[12]^shift_seed[14]^shift_seed[15])};
      
      
      end;
