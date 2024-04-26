@@ -27,7 +27,7 @@ if [file exists work] {
 vlib work
 
 # compile source files
-vlog game.sv game_tb.sv datapath.sv flopenr.sv
+vlog game.sv game_tb.sv datapath.sv flopenr.sv lfsr.sv fsm.sv
 
 # start and run simulation
 vsim -voptargs=+acc work.stimulus
@@ -40,8 +40,8 @@ view wave
 # add wave -hex -r /stimulus/*
 add wave -noupdate -divider -height 32 "FSM"
 add wave -hex /stimulus/clk
-add wave -hex /stimulus/dut/dut2/reset
-add wave -hex /stimulus/dut/dut2/en
+add wave -hex /stimulus/dut/reset
+add wave -hex /stimulus/dut/start
 add wave -hex /stimulus/dut/seed
 add wave -hex /stimulus/dut/grid_evolve
 
