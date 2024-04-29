@@ -1,8 +1,25 @@
 # compile verilog/system verilog design source files
 sv xil_defaultlib  \
-"../../../../Demo2.srcs/sources_1/imports/vivado/digit2segments.sv" \
-"../../../../Demo2.srcs/sources_1/imports/vivado/segment_driver.sv" \
-"../../../../Demo2.srcs/sources_1/new/top_demo.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/audio_clock_regeneration_packet.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/audio_info_frame.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/audio_sample_packet.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/auxiliary_video_information_info_frame.sv" \
+"../../../../../../SV/datapath.sv" \
+"../../../../Project.srcs/sources_1/imports/vivado/digit2segments.sv" \
+"../../../../../../SV/flopenr.sv" \
+"../../../../../../SV/fsm.sv" \
+"../../../../../../SV/game.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/hdmi.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/hdmi_top.sv" \
+"../../../../../../SV/lfsr.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/packet_assembler.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/packet_picker.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/pll.sv" \
+"../../../../Project.srcs/sources_1/imports/vivado/segment_driver.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/serializer.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/source_product_description_info_frame.sv" \
+"../../../../Project.srcs/sources_1/imports/dldfall22proj/ProjectHDMI/hdmi_working/tmds_channel.sv" \
+"../../../../Project.srcs/sources_1/new/top_demo.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

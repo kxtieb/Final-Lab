@@ -36,7 +36,7 @@ module FSM (clk, reset, start, lfsr_load, lfsr_rst, rst, en);
        S2: begin
 	   lfsr_rst = 0;
     rst = 1;
-    en = 1;	  	  
+    en = 0;	  	  
 	  if (start) nextstate <= S1;
     else nextstate <= S2;
        end
