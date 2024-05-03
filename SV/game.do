@@ -42,6 +42,7 @@ add wave -noupdate -divider -height 32 "FSM"
 add wave -hex /stimulus/clk
 add wave -hex /stimulus/dut/reset
 add wave -hex /stimulus/dut/start
+add wave -hex /stimulus/dut/lfsr_load
 add wave -hex /stimulus/dut/seed
 add wave -hex /stimulus/dut/grid_evolve
 
